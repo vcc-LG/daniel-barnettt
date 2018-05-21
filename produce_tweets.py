@@ -3,12 +3,13 @@ import twitter
 import _pickle as cPickle
 import sys
 import random
+from credentials import consumer_key, consumer_secret, access_token_key, access_token_secret
 
 def get_api():
-    api = twitter.Api(consumer_key='cpMdXihHf33UTfgYRb8ljpswA',
-                      consumer_secret='ZdmdLSq9tYVnG0eHBG0DH56g2GB4xaiaDa4wYqfh2TRw8whQaM',
-                      access_token_key='998650292857131014-awsoWfRhWAsKjQ7mZauJob2XnV0Uz8q',
-                      access_token_secret='X9nVHXQaQJLH2qa0Vv1FBaRpNbHXWeVIKnXe8MbPcr8ri')
+    api = twitter.Api(consumer_key=consumer_key,
+                      consumer_secret=consumer_secret,
+                      access_token_key=access_token_key,
+                      access_token_secret=access_token_secret)
     return api
 
 def get_statuses_from_file():
@@ -22,6 +23,7 @@ def get_statuses_from_file():
 
 def post_status(api, status_string):
     api.PostUpdate(status_string.text)
+    print("Posted to twitter")
 
 def run_produce_tweets():
     api = get_api()

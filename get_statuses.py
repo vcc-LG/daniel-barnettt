@@ -1,10 +1,9 @@
 import requests
 import twitter
 import _pickle as cPickle
-from credentials import *
+from credentials import consumer_key, consumer_secret, access_token_key, access_token_secret
 
 def get_api():
-    consumer_secret = consumer_secret.strip('\t')
     api = twitter.Api(consumer_key=consumer_key,
                       consumer_secret=consumer_secret,
                       access_token_key=access_token_key,
