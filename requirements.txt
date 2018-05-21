@@ -1,0 +1,4 @@
+apscheduler==3.5.0
+redis==2.10.6
+rq==0.10.0
+python-twitter==3.4.1

@@ -22,7 +22,9 @@ def get_statuses_from_file():
     return status_list
 
 def post_status(api, status_string):
-    api.PostUpdate(status_string.text)
+    raw_text = status_string.text
+    lol_text = ''.join(random.choice((x,y)) for x,y in zip(raw_text.upper(),raw_text.lower()))
+    api.PostUpdate(lol_text)
     print("Posted to twitter")
 
 def run_produce_tweets():
