@@ -11,7 +11,17 @@ def get_api():
     return api
 
 def get_statuses(api):
-    return api.GetUserTimeline(screen_name='DanFromAbove')
+    all_tweets = []
+    screen_name = 'DanFromAbove'
+    new_tweets = api.GetUserTimeline(screen_name=screen_name,count=200)
+    all_tweets.extend(new_tweets)
+    oldest = all_tweets[-1].id - 1
+    while len(new_tweets) > 0:		
+	    new_tweets = api.GetUserTimeline(screen_name = screen_name,count=200,max_id=oldest)
+	    all_tweets.extend(new_tweets)
+	    oldest = all_tweets[-1].id - 1
+	    print("...%s tweets downloaded so far" % (len(all_tweets)))
+    return all_tweets
 
 def save_data(status_list):
     with open('status_list.p', 'wb') as fp:

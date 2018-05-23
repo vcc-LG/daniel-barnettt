@@ -16,6 +16,7 @@ def get_statuses_from_file():
     try:
         with open('status_list.p', 'rb') as fp:
             status_list = cPickle.load(fp)
+        print('opened status file')
     except:
         print("Could not open tweet data")
         sys.exit(1)
